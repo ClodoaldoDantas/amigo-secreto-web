@@ -1,9 +1,10 @@
-import { Button } from './components/ui/button'
+import { BrowserRouter } from 'react-router'
+import { MainRoutes } from './routes'
 
 export function App() {
 	return (
-		<div className="h-screen w-full flex items-center justify-center">
-			<Button>Click me</Button>
-		</div>
+		<BrowserRouter>
+			<MainRoutes />
+		</BrowserRouter>
 	)
 }
