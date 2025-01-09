@@ -47,7 +47,7 @@ export function AuthForm({ onSubmit }: AuthFormProps) {
 						<FormItem>
 							<FormLabel>E-mail</FormLabel>
 							<FormControl>
-								<Input placeholder="maria@gmail.com" {...field} />
+								<Input {...field} />
 							</FormControl>
 							<FormMessage />
 						</FormItem>

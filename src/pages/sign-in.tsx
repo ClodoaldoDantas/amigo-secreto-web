@@ -7,11 +7,24 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { Link } from 'react-router'
+import { http } from '@/lib/http'
+import { useAuthStore } from '@/store/use-auth-store'
+import { Link, useNavigate } from 'react-router'
 
 export function SignInPage() {
-	function handleLogin(values: LoginFormData) {
-		console.log(values)
+	const { setCredentials } = useAuthStore()
+	const navigate = useNavigate()
+
+	async function handleLogin({ email, password }: LoginFormData) {
+		try {
+			const response = await http.post('login', { email, password })
+			setCredentials(response.data.user, response.data.token)
+
+			navigate('/dashboard')
+		} catch (err) {
+			console.error(err)
+			window.alert('Erro ao fazer login')
+		}
 	}
 
 	return (
