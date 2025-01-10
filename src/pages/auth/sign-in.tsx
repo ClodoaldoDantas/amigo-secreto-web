@@ -15,7 +15,7 @@ export function SignInPage() {
 	const { setCredentials } = useAuthStore()
 	const navigate = useNavigate()
 
-	async function handleLogin({ email, password }: LoginFormData) {
+	async function handleSignIn({ email, password }: LoginFormData) {
 		try {
 			const response = await http.post('login', { email, password })
 			setCredentials(response.data.user, response.data.token)
@@ -37,7 +37,7 @@ export function SignInPage() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<AuthForm onSubmit={handleLogin} />
+				<AuthForm onSubmit={handleSignIn} />
 			</CardContent>
 
 			<CardFooter className="justify-center">

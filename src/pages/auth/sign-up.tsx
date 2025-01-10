@@ -7,13 +7,21 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { Link } from 'react-router'
+import { http } from '@/lib/http'
+import { Link, useNavigate } from 'react-router'
 
 export function SignUpPage() {
-	function handleSignUp(values: LoginFormData) {
-		console.log(values)
-	}
+	const navigate = useNavigate()
 
+	async function handleSignUp({ email, password }: LoginFormData) {
+		try {
+			await http.post('register', { email, password })
+			navigate('/')
+		} catch (err) {
+			console.error(err)
+			window.alert('Erro ao cadastrar usuário')
+		}
+	}
 	return (
 		<Card className="w-[400px]">
 			<CardHeader>
