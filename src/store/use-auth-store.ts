@@ -10,6 +10,7 @@ type AuthState = {
 	user: User | null
 	token: string | null
 	setCredentials: (user: User, token: string) => void
+	clearCredentials: () => void
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -18,6 +19,7 @@ export const useAuthStore = create<AuthState>()(
 			user: null,
 			token: null,
 			setCredentials: (user, token) => set({ user, token }),
+			clearCredentials: () => set({ user: null, token: null }),
 		}),
 		{
 			name: 'auth-storage',

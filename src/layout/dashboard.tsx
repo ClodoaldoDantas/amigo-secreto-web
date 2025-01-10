@@ -1,4 +1,5 @@
 import { Logo } from '@/components/logo'
+import { SignOutButton } from '@/components/sign-out-button'
 import { Button } from '@/components/ui/button'
 import { useAuthStore } from '@/store/use-auth-store'
 import { UserPlusIcon, UsersIcon } from 'lucide-react'
@@ -31,6 +32,8 @@ export function DashboardLayout() {
 								Novo Groupo
 							</Link>
 						</Button>
+
+						<SignOutButton />
 					</div>
 				</div>
 			</header>
