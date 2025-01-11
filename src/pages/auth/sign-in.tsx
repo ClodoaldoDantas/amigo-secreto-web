@@ -9,6 +9,8 @@ import {
 } from '@/components/ui/card'
 import { http } from '@/lib/http'
 import { useAuthStore } from '@/store/use-auth-store'
+import { isAxiosError } from 'axios'
+import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router'
 
 export function SignInPage() {
@@ -22,8 +24,11 @@ export function SignInPage() {
 
 			navigate('/dashboard/groups')
 		} catch (err) {
+			if (isAxiosError(err) && err.response) {
+				toast.error(err.response.data.message)
+			}
+
 			console.error(err)
-			window.alert('Erro ao fazer login')
 		}
 	}
 
