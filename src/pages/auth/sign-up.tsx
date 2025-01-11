@@ -1,3 +1,4 @@
+import { signUp } from '@/api/sign-up'
 import { AuthForm, type LoginFormData } from '@/components/auth-form'
 import {
 	Card,
@@ -7,8 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { http } from '@/lib/http'
-import { isAxiosError } from 'axios'
+import { handleError } from '@/utils/handle-error'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router'
 
@@ -17,14 +17,11 @@ export function SignUpPage() {
 
 	async function handleSignUp({ email, password }: LoginFormData) {
 		try {
-			await http.post('register', { email, password })
+			await signUp({ email, password })
+			toast.success('Cadastro realizado com sucesso! Faça login para entrar.')
 			navigate('/')
 		} catch (err) {
-			if (isAxiosError(err) && err.response) {
-				toast.error(err.response.data.message)
-			}
-
-			console.error(err)
+			handleError(err)
 		}
 	}
 

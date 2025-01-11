@@ -1,3 +1,4 @@
+import { signIn } from '@/api/sign-in'
 import { AuthForm, type LoginFormData } from '@/components/auth-form'
 import {
 	Card,
@@ -7,10 +8,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { http } from '@/lib/http'
 import { useAuthStore } from '@/store/use-auth-store'
-import { isAxiosError } from 'axios'
-import toast from 'react-hot-toast'
+import { handleError } from '@/utils/handle-error'
 import { Link, useNavigate } from 'react-router'
 
 export function SignInPage() {
@@ -19,16 +18,12 @@ export function SignInPage() {
 
 	async function handleSignIn({ email, password }: LoginFormData) {
 		try {
-			const response = await http.post('login', { email, password })
+			const response = await signIn({ email, password })
 			setCredentials(response.data.user, response.data.token)
 
 			navigate('/dashboard/groups')
 		} catch (err) {
-			if (isAxiosError(err) && err.response) {
-				toast.error(err.response.data.message)
-			}
-
-			console.error(err)
+			handleError(err)
 		}
 	}
 
