@@ -1,12 +1,13 @@
-import { GroupCard } from './group-card'
+import { fetchGroups } from '@/api/fetch-groups'
+import { Suspense } from 'react'
+import { GroupList } from './group-list'
 
 export function GroupsPage() {
+	const fetchGroupsPromise = fetchGroups()
+
 	return (
-		<div className="my-6 grid grid-cols-4 gap-3">
-			<GroupCard />
-			<GroupCard />
-			<GroupCard />
-			<GroupCard />
-		</div>
+		<Suspense fallback={<p>Loading...</p>}>
+			<GroupList fetchGroupsPromise={fetchGroupsPromise} />
+		</Suspense>
 	)
 }
