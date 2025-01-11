@@ -1,10 +1,12 @@
-import { version } from 'react'
+import { GroupCard } from './group-card'
 
 export function GroupsPage() {
 	return (
-		<>
-			<p>lista de grupos</p>
-			<p>React Version: {version}</p>
-		</>
+		<div className="my-6 grid grid-cols-4 gap-3">
+			<GroupCard />
+			<GroupCard />
+			<GroupCard />
+			<GroupCard />
+		</div>
 	)
 }

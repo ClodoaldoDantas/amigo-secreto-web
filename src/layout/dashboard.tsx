@@ -14,7 +14,7 @@ export function DashboardLayout() {
 
 	return (
 		<>
-			<header className="border-b border-zinc-800 py-5">
+			<header className="border-b py-5">
 				<div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
 					<Logo />
 
