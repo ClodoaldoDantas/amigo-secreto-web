@@ -11,7 +11,6 @@ export type FetchGroupsResponse = {
 }
 
 export async function fetchGroups() {
-	await new Promise((resolve) => setTimeout(resolve, 3000))
 	const response = await http.get<FetchGroupsResponse>('groups')
 	return response.data
 }
