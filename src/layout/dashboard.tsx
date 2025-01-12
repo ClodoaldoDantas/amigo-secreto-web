@@ -27,7 +27,7 @@ export function DashboardLayout() {
 						</Button>
 
 						<Button asChild className="text-base" variant="ghost">
-							<Link to="/dashboard/groups">
+							<Link to="/dashboard/groups/create">
 								<UserPlusIcon className="size-4" />
 								Novo Groupo
 							</Link>
