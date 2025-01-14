@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { CopyToClipboard } from '@/components/copy-to-clipboard'
 import {
 	Table,
 	TableBody,
@@ -7,7 +7,6 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table'
-import { CopyIcon } from 'lucide-react'
 
 type GroupParticipantsProps = {
 	participans: {
@@ -26,17 +25,20 @@ export function GroupParticipants({ participans }: GroupParticipantsProps) {
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{participans.map((participant) => (
-					<TableRow key={participant._id}>
-						<TableCell>{participant.name}</TableCell>
-						<TableCell>
-							<Button variant="outline" size="sm">
-								<CopyIcon className="size-4" />
-								Copiar
-							</Button>
-						</TableCell>
-					</TableRow>
-				))}
+				{participans.map((participant) => {
+					const origin = window.location.origin
+					const url = new URL(`/reveal/${participant._id}`, origin).toString()
+					const textoToCopy = `Acesse o link a seguir para revelar o seu amigo secreto: ${url}`
+
+					return (
+						<TableRow key={participant._id}>
+							<TableCell>{participant.name}</TableCell>
+							<TableCell>
+								<CopyToClipboard value={textoToCopy} />
+							</TableCell>
+						</TableRow>
+					)
+				})}
 			</TableBody>
 		</Table>
 	)
