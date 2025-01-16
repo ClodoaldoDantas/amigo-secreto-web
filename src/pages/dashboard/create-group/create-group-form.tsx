@@ -1,3 +1,4 @@
+import { createGroup } from '@/api/create-group'
 import { Button } from '@/components/ui/button'
 import {
 	Form,
@@ -8,10 +9,13 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { handleError } from '@/utils/handle-error'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { PlusIcon, TrashIcon } from 'lucide-react'
 import { useFieldArray, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router'
 import { z } from 'zod'
 
 const createGroupFormSchema = z.object({
@@ -30,6 +34,8 @@ const createGroupFormSchema = z.object({
 export type CreateGroupFormData = z.infer<typeof createGroupFormSchema>
 
 export function CreateGroupForm() {
+	const navigate = useNavigate()
+
 	const form = useForm<CreateGroupFormData>({
 		resolver: zodResolver(createGroupFormSchema),
 		defaultValues: {
@@ -51,13 +57,20 @@ export function CreateGroupForm() {
 		remove(index)
 	}
 
-	function handleCreateGroup(values: CreateGroupFormData) {
+	async function handleCreateGroup(values: CreateGroupFormData) {
 		const data = {
 			name: values.name,
 			participants: values.participants.map((participant) => participant.name),
 		}
 
-		console.log(data)
+		try {
+			await createGroup(data)
+			toast.success('Grupo criado com sucesso!')
+
+			navigate('/dashboard/groups')
+		} catch (err) {
+			handleError(err)
+		}
 	}
 
 	return (
@@ -122,7 +135,11 @@ export function CreateGroupForm() {
 					))}
 				</div>
 
-				<Button className="w-full mt-4" type="submit">
+				<Button
+					type="submit"
+					className="w-full mt-4"
+					disabled={form.formState.isSubmitting}
+				>
 					Criar Grupo
 				</Button>
 			</form>

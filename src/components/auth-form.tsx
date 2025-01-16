@@ -68,7 +68,11 @@ export function AuthForm({ onSubmit }: AuthFormProps) {
 					)}
 				/>
 
-				<Button className="w-full" type="submit">
+				<Button
+					type="submit"
+					className="w-full"
+					disabled={form.formState.isSubmitting}
+				>
 					Acessar
 				</Button>
 			</form>
