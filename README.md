@@ -6,7 +6,7 @@ Uma aplicação web desenvolvida para facilitar a organização e o sorteio de a
 
 - Cadastro de participantes com nome e e-mail.
 - Realização de sorteio automático, garantindo que nenhum participante tire a si mesmo.
-- Envio dos resultados do sorteio para os e-mails dos participantes.
+- Envio dos resultados do sorteio para cada um dos participantes.
 
 ## 🚀 Tecnologias
 
