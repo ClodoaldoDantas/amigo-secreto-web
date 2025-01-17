@@ -19,7 +19,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export function SkeletonGroupDetails() {
 	return (
-		<Card className="w-[660px]">
+		<Card className="w-full">
 			<CardHeader className="space-y-2">
 				<CardTitle>
 					<Skeleton className="h-8 w-48 bg-zinc-800" />

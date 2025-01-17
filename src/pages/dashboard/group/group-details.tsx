@@ -17,7 +17,7 @@ export function GroupDetails({ fetchGroupPromise }: GroupDetailsProps) {
 	const { group } = use(fetchGroupPromise)
 
 	return (
-		<Card className="w-[660px]">
+		<Card className="w-full">
 			<CardHeader>
 				<CardTitle className="text-2xl">{group.name}</CardTitle>
 				<CardDescription className="text-base">
