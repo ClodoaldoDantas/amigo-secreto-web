@@ -32,10 +32,10 @@ cd amigo-secreto-web
 npm install
 ```
 
-4. Configure as variáveis de ambiente: Crie um arquivo `.env` na raiz do projeto com os seguintes valores:
+4. Configure as variáveis de ambiente: Crie um arquivo `.env.local` na raiz do projeto com os seguintes valores:
 
 ```makefile
-API_URL=
+VITE_API_URL=
 ```
 
 4. Inicie o servidor em desenvolvimento

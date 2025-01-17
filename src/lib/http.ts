@@ -2,7 +2,7 @@ import { useAuthStore } from '@/store/use-auth-store'
 import axios, { isAxiosError } from 'axios'
 
 export const http = axios.create({
-	baseURL: 'http://localhost:3333/',
+	baseURL: import.meta.env.VITE_API_URL,
 })
 
 http.interceptors.request.use(
