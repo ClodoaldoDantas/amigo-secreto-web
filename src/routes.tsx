@@ -6,6 +6,7 @@ import { SignUpPage } from './pages/auth/sign-up'
 import { CreateGroupPage } from './pages/dashboard/create-group'
 import { GroupPage } from './pages/dashboard/group'
 import { GroupsPage } from './pages/dashboard/groups'
+import { RevealPage } from './pages/reveal'
 
 export function MainRoutes() {
 	return (
@@ -20,6 +21,8 @@ export function MainRoutes() {
 				<Route path="groups/create" element={<CreateGroupPage />} />
 				<Route path="groups/:id" element={<GroupPage />} />
 			</Route>
+
+			<Route path="/reveal/:code" element={<RevealPage />} />
 		</Routes>
 	)
 }
