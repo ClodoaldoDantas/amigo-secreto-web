@@ -1,5 +1,3 @@
-import { signIn } from '@/api/sign-in'
-import { AuthForm, type LoginFormData } from '@/components/auth-form'
 import {
 	Card,
 	CardContent,
@@ -8,25 +6,10 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { useAuthStore } from '@/store/use-auth-store'
-import { handleError } from '@/utils/handle-error'
-import { Link, useNavigate } from 'react-router'
+import { Link } from 'react-router'
+import { SignInForm } from './sign-in-form'
 
 export function SignInPage() {
-	const { setCredentials } = useAuthStore()
-	const navigate = useNavigate()
-
-	async function handleSignIn({ email, password }: LoginFormData) {
-		try {
-			const response = await signIn({ email, password })
-			setCredentials(response.data.user, response.data.token)
-
-			navigate('/dashboard/groups')
-		} catch (err) {
-			handleError(err)
-		}
-	}
-
 	return (
 		<Card className="w-[400px]">
 			<CardHeader>
@@ -37,7 +20,7 @@ export function SignInPage() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<AuthForm onSubmit={handleSignIn} />
+				<SignInForm />
 			</CardContent>
 
 			<CardFooter className="justify-center">
