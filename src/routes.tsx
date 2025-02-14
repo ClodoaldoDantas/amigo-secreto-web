@@ -16,13 +16,13 @@ export function MainRoutes() {
 				<Route path="sign-up" element={<SignUpPage />} />
 			</Route>
 
+			<Route path="reveal/:code" element={<RevealPage />} />
+
 			<Route path="dashboard" element={<DashboardLayout />}>
 				<Route path="groups" element={<GroupsPage />} />
 				<Route path="groups/create" element={<CreateGroupPage />} />
 				<Route path="groups/:id" element={<GroupPage />} />
 			</Route>
-
-			<Route path="/reveal/:code" element={<RevealPage />} />
 		</Routes>
 	)
 }
