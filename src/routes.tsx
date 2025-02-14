@@ -11,7 +11,7 @@ import { RevealPage } from './pages/reveal'
 export function MainRoutes() {
 	return (
 		<Routes>
-			<Route path="/" element={<AuthLayout />}>
+			<Route element={<AuthLayout />}>
 				<Route index element={<SignInPage />} />
 				<Route path="sign-up" element={<SignUpPage />} />
 			</Route>
