@@ -9,7 +9,7 @@ export function AuthLayout() {
 	}
 
 	return (
-		<div className="h-screen w-full flex items-center justify-center">
+		<div className="h-dvh w-full flex items-center justify-center px-4">
 			<Outlet />
 		</div>
 	)
