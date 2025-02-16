@@ -90,7 +90,7 @@ export function CreateGroupForm() {
 					)}
 				/>
 
-				<div className="flex items-center justify-between mt-10 mb-4">
+				<div className="flex flex-wrap gap-2 items-center justify-between mt-10 mb-4">
 					<span className="block text-xl">Participantes</span>
 
 					<Button

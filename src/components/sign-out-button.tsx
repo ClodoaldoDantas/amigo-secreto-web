@@ -1,14 +1,17 @@
 import { useAuthStore } from '@/store/use-auth-store'
 import { LogOutIcon } from 'lucide-react'
-import { Button } from './ui/button'
 
 export function SignOutButton() {
 	const { clearCredentials } = useAuthStore()
 
 	return (
-		<Button onClick={clearCredentials} className="text-base" variant="ghost">
+		<button
+			type="button"
+			onClick={clearCredentials}
+			className="flex items-center gap-2 text-sm px-2 py-1.5"
+		>
 			<LogOutIcon className="size-4" />
 			Sair da conta
-		</Button>
+		</button>
 	)
 }
