@@ -38,7 +38,7 @@ npm install
 VITE_API_URL=
 ```
 
-4. Inicie o servidor em desenvolvimento
+5. Inicie o servidor em desenvolvimento
 
 ```bash
 npm run dev
